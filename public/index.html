@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор остатков материалов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #555;
+        }
+        input[type="number"] {
+            /*width: 100%;*/
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .result {
+            margin-bottom: 25px;
+            font-size: 26px;
+            color: blue;
+            text-align: center;
+        }
+        .items-container_title {
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+            text-align: center;
+        }
+        .antiFake-barrier-container_list {
+            display: flex;
+            justify-content: space-between;
+        }
+        .antiFake-barrier-container_item-select {
+            width: 100%;
+            padding: 10px;
+        }
+        .spanbond-container_list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        .spanbond-container_item-select {
+            width: 100%;
+            padding: 10px;
+        }
+       
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Калькулятор остатков материалов</h1>
+    <h2>Материалы:</h2>
+    <div class="items-container">
+      <h2 class="items-container_title">Антификальный барьер</h2>
+      <div class="antiFake-barrier-container_list">
+        <div class="antiFake-barrier-container_item">
+          <label for="radius-barrier">Введите расстояние от втулки в мм</label>
+          <input type="number" min="0" onkeydown="return event.key !== '-';" id="radius-barrier" placeholder="Радиус в мм" required>
+        </div>
+        <div class="antiFake-barrier-container_item">
+          <label for="density-barrier">Выберите плотность гр/м2</label>
+          <select id="density-barrier" name="density-barrier" class="antiFake-barrier-container_item-select">
+            <option value="18">18</option>
+          </select>                   
+        </div>
+      </div>
+      <button onclick="calculateAntifakeBarrier()">Рассчитать остаток</button>
+      <div class="result" id="result-barrier"></div>
+    </div>
+    <div>
+        <label for="radius-elastic">Эластичный пояс (введите радиус в мм):</label>
+        <input type="number" id="radius-elastic" placeholder="Радиус в мм" required>
+        <button>Рассчитать остаток</button>
+        <div class="result" id="result-elastic"></div>
+    </div>
+    <div>
+        <label for="radius-distribution">Распределяющий слой (введите радиус в мм):</label>
+        <input type="number" id="radius-distribution" placeholder="Радиус в мм" required>
+        <button>Рассчитать остаток</button>
+        <div class="result" id="result-distribution"></div>
+    </div>
+    <div>
+        <label for="radius-cellulose">Целлюлоза (введите радиус в мм):</label>
+        <input type="number" id="radius-cellulose" placeholder="Радиус в мм" required>
+        <button>Рассчитать остаток</button>
+        <div class="result" id="result-cellulose"></div>
+    </div>
+    <div class="items-container">
+        <h2 class="items-container_title">Спанбонд 16 г/м2</h2>
+        <div class="spanbond-container_list">
+          <div class="spanbond-container_item">
+            <label for="radius-spanbond">Введите расстояние от втулки в мм</label>
+            <input type="number" min="0" onkeydown="return event.key !== '-';" id="radius-spanbond" placeholder="Радиус в мм" required>
+          </div>
+          <div class="spanbond-container_item">
+            <label for="density-spanbond">Выберите плотность гр/м2</label>
+            <select id="density-spanbond" name="density-spanbond" class="spanbond-container_item-select">
+              <option value="16">16</option>
+            </select>
+          </div>
+          <div class="spanbond-container_item">
+            <label for="width-spanbond">Выберите ширину материала в мм</label>
+            <select id="width-spanbond" name="width-spanbond" class="spanbond-container_item-select ">
+              <option value="650">650</option>
+              <option value="770">770</option>
+          </select>
+          </div>
+        </div>
+        <button onclick="calculateSpanbond()">Рассчитать остаток</button>
+        <div class="result" id="result-spanbond"></div>
+      </div>
+  </div>
+
+<script src="./index.js"></script>
+
+</body>
+</html>
