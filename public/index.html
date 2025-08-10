@@ -69,6 +69,12 @@
             width: 100%;
             padding: 10px;
         }
+        .antiFake-barrier-container_list {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
         .spanbond-container_list {
             display: flex;
             justify-content: space-around;
@@ -79,12 +85,25 @@
             width: 100%;
             padding: 10px;
         }
+        .img-responsive {
+        
+
+        }
        
     </style>
 </head>
 <body>
+ 
   <div class="container">
     <h1>Калькулятор остатков материалов</h1>
+     <div>
+    <picture>
+      <img class="img-responsive"
+           src="https://komplemir.by/templates/corporate/site/img/rol--diameter.jpg"
+           alt="что такое метры погонные"
+           title="что такое метры погонные">
+    </picture>
+  </div>
     <h2>Материалы:</h2>
     <div class="items-container">
       <h2 class="items-container_title">Антификальный барьер</h2>
@@ -99,27 +118,68 @@
             <option value="18">18</option>
           </select>                   
         </div>
+        <div class="spanbond-container_item">
+          <label for="width-antifakeBarrier">Выберите ширину материала в мм</label>
+          <select id="width-antifakeBarrier" name="width-antifakeBarrier" class="spanbond-container_item-select ">
+            <option value="80">80</option>
+            <option value="120">120</option>
+          </select>
+        </div>
       </div>
       <button onclick="calculateAntifakeBarrier()">Рассчитать остаток</button>
       <div class="result" id="result-barrier"></div>
     </div>
-    <div>
-        <label for="radius-elastic">Эластичный пояс (введите радиус в мм):</label>
-        <input type="number" id="radius-elastic" placeholder="Радиус в мм" required>
-        <button>Рассчитать остаток</button>
-        <div class="result" id="result-elastic"></div>
+    <div class="items-container">
+      <h2 class="items-container_title">Эластичный пояс</h2>
+      <div class="antiFake-barrier-container_list">
+        <div class="antiFake-barrier-container_item">
+          <label for="radius-elastic">Введите расстояние от втулки в мм</label>
+          <input type="number" min="0" onkeydown="return event.key !== '-';" id="radius-elastic" placeholder="Радиус в мм" required>
+        </div>
+        <div class="antiFake-barrier-container_item">
+          <label for="density-elastic">Выберите плотность гр/м2</label>
+          <select id="density-elastic" name="density-elastic" class="antiFake-barrier-container_item-select">
+            <option value="55">55</option>
+          </select>                   
+        </div>
+        <div class="spanbond-container_item">
+          <label for="width-elastic">Выберите ширину материала в мм</label>
+          <select id="width-elastic" name="width-elastic" class="spanbond-container_item-select ">
+            <option value="130">130</option>
+          </select>
+        </div>
+      </div>
+      <button onclick="calculateElasticWaistBand()">Рассчитать остаток</button>
+      <div class="result" id="result-elastic"></div>
+    </div>
+    <div class="items-container">
+      <h2 class="items-container_title">Целлюлоза</h2>
+      <div class="antiFake-barrier-container_list">
+        <div class="antiFake-barrier-container_item">
+          <label for="radius-cellulose">Введите расстояние от втулки в мм</label>
+          <input type="number" min="0" onkeydown="return event.key !== '-';" id="radius-cellulose" placeholder="Радиус в мм" required>
+        </div>
+        <div class="antiFake-barrier-container_item">
+          <label for="density-cellulose">Выберите плотность гр/м2</label>
+          <select id="density-cellulose" name="density-cellulose" class="antiFake-barrier-container_item-select">
+            <option value="700">700</option>
+          </select>                   
+        </div>
+        <div class="spanbond-container_item">
+          <label for="width-cellulose">Выберите ширину материала в мм</label>
+          <select id="width-cellulose" name="width-cellulose" class="spanbond-container_item-select ">
+            <option value="500">500</option>
+          </select>
+        </div>
+      </div>
+      <button onclick="calculateCellulose()">Рассчитать остаток</button>
+      <div class="result" id="result-cellulose"></div>
     </div>
     <div>
         <label for="radius-distribution">Распределяющий слой (введите радиус в мм):</label>
         <input type="number" id="radius-distribution" placeholder="Радиус в мм" required>
         <button>Рассчитать остаток</button>
         <div class="result" id="result-distribution"></div>
-    </div>
-    <div>
-        <label for="radius-cellulose">Целлюлоза (введите радиус в мм):</label>
-        <input type="number" id="radius-cellulose" placeholder="Радиус в мм" required>
-        <button>Рассчитать остаток</button>
-        <div class="result" id="result-cellulose"></div>
     </div>
     <div class="items-container">
         <h2 class="items-container_title">Спанбонд 16 г/м2</h2>
@@ -146,6 +206,29 @@
         <button onclick="calculateSpanbond_16()">Рассчитать остаток</button>
         <div class="result" id="result-spanbond"></div>
       </div>
+       <div class="items-container">
+        <h2 class="items-container_title">Спанбонд 16/150 г/м2</h2>
+        <div class="spanbond-container_list">
+          <div class="spanbond-container_item">
+            <label for="radius-spanbond_16_150">Введите расстояние от втулки в мм</label>
+            <input type="number" min="0" onkeydown="return event.key !== '-';" id="radius-spanbond_16_150" placeholder="Радиус в мм" required>
+          </div>
+          <div class="spanbond-container_item">
+            <label for="density-spanbond_16_150">Выберите плотность гр/м2</label>
+            <select id="density-spanbond_16_150" name="density-spanbond_16_150" class="spanbond-container_item-select">
+              <option value="16">16</option>
+            </select>
+          </div>
+          <div class="spanbond-container_item">
+            <label for="width-spanbond_16_150">Выберите ширину материала в мм</label>
+            <select id="width-spanbond_16_150" name="width-spanbond_16_150" class="spanbond-container_item-select ">
+              <option value="150">150</option>
+          </select>
+          </div>
+        </div>
+        <button onclick="calculateSpanbond_16_150()">Рассчитать остаток</button>
+        <div class="result" id="result-spanbond_16_150"></div>
+      </div>
       <div class="items-container">
         <h2 class="items-container_title">Спанбонд 26 г/м2</h2>
         <div class="spanbond-container_list">
@@ -165,6 +248,7 @@
               <option value="385">385</option>
               <option value="850">850</option>
               <option value="160">160</option>
+              <option value="770">770</option>
           </select>
           </div>
         </div>
