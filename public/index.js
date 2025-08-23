@@ -93,6 +93,21 @@ function calculateElasticWaistBand() {
         document.getElementById('result-elastic').innerHTML = `Пожалуйста, введите корректное значение в миллиметрах`;
     }
 }
+let a = 5;
+let b = a; // b теперь равно 5
+console.log(b)
+console.log(a)
+a = 10; // a изменяется, b остается 5
+console.log(b)
+console.log(a)
+
+
+let obj1 = { name: "Alice" };
+let obj2 = obj1; 
+console.log(obj2)// obj2 ссылается на тот же объект
+obj1.name = "Bob"; // изменяем obj1
+console.log(obj2.name);
+console.log(obj1) // выводит "Bob", так как obj2 ссылается на тот же объект
 function calculateCellulose() {
     const selectSpanbond = document.getElementById('density-cellulose');
     const selectWidthSpanbond = document.getElementById('width-cellulose').value;
@@ -116,6 +131,7 @@ function calculateCellulose() {
         document.getElementById('result-cellulose').innerHTML = `Пожалуйста, введите корректное значение в миллиметрах`;
     }
 }
+
 function calculateSpanbond_26() {
     const selectSpanbond = document.getElementById('density-spanbond_26');
     const selectWidthSpanbond = document.getElementById('width-spanbond_26').value;
@@ -126,8 +142,8 @@ function calculateSpanbond_26() {
       }
     else if (radius > 0 && radius <= 370){
         const diameter = radius * 2 + 92
-        const volume = Math.PI * (Math.pow(diameter, 2) - 8464); //96 mm втулка
-        const length = volume / 0.2932;//0.072 * 4 0.2956 0.288
+        const volume = Math.PI * (Math.pow(diameter, 2) - 8464); //92 mm втулка
+        const length = volume / 0.2932;//0.072 * 4 0.2932
         const result = length / 1000 //m
         const weight = (result * (+selectWidthSpanbond/1000) * +selectSpanbondOption) / 1000;
         document.getElementById('result-spanbond_26').innerHTML = `Остаток спанбонд ${selectSpanbondOption}/${selectWidthSpanbond} мм: ${weight.toFixed(3)} кг`;
@@ -137,5 +153,29 @@ function calculateSpanbond_26() {
     }
     else {
         document.getElementById('result-spanbond_26').innerHTML = `Пожалуйста, введите корректное значение в миллиметрах`;
+    }
+}
+
+function calculateSpanbond_26_245() {
+    const selectSpanbond = document.getElementById('density-spanbond_26_245');
+    const selectWidthSpanbond = document.getElementById('width-spanbond_26_245').value;
+    const selectSpanbondOption = parseFloat(selectSpanbond.value);
+    const radius = document.getElementById('radius-spanbond_26_245').value;
+    if (radius == 0) {
+        document.getElementById('result-spanbond_26_245').innerHTML = `Остаток спанбонда: 0 кг`;
+      }
+    else if (radius > 0 && radius <= 370){
+        const diameter = radius * 2 + 94
+        const volume = Math.PI * (Math.pow(diameter, 2) - 8836); //94 mm втулка
+        const length = volume / 0.270;// 0.277 в идеале
+        const result = length / 1000 //m
+        const weight = (result * (+selectWidthSpanbond/1000) * +selectSpanbondOption) / 1000;
+        document.getElementById('result-spanbond_26_245').innerHTML = `Остаток спанбонд ${selectSpanbondOption}/${selectWidthSpanbond} мм: ${weight.toFixed(3)} кг`;
+    }
+    else if (radius > 370){
+        document.getElementById('result-spanbond_26_245').innerHTML = `Значение не может превышать 370 мм`;
+    }
+    else {
+        document.getElementById('result-spanbond_26_245').innerHTML = `Пожалуйста, введите корректное значение в миллиметрах`;
     }
 }

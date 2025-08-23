@@ -255,6 +255,29 @@
         <button onclick="calculateSpanbond_26()">Рассчитать остаток</button>
         <div class="result" id="result-spanbond_26"></div>
       </div>
+      <div class="items-container">
+        <h2 class="items-container_title">Спанбонд АСМ 26/245 г/м2</h2>
+        <div class="spanbond-container_list">
+          <div class="spanbond-container_item">
+            <label for="radius-spanbond_26_245">Введите расстояние от втулки в мм</label>
+            <input type="number" min="0" onkeydown="return event.key !== '-';" id="radius-spanbond_26_245" placeholder="Радиус в мм" required>
+          </div>
+          <div class="spanbond-container_item">
+            <label for="density-spanbond_26_245">Выберите плотность гр/м2</label>
+            <select id="density-spanbond_26_245" name="density-spanbond_26-245" class="spanbond-container_item-select">
+              <option value="26">26</option>
+            </select>
+          </div>
+          <div class="spanbond-container_item">
+            <label for="width-spanbond_26_245">Выберите ширину материала в мм</label>
+            <select id="width-spanbond_26_245" name="width-spanbond_26_245" class="spanbond-container_item-select ">
+              <option value="245">245</option>
+          </select>
+          </div>
+        </div>
+        <button onclick="calculateSpanbond_26_245()">Рассчитать остаток</button>
+        <div class="result" id="result-spanbond_26_245"></div>
+      </div>
   </div>
 
 <script src="./index.js"></script>
